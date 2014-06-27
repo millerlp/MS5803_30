@@ -180,13 +180,13 @@ void MS_5803::readSensor() {
     // (i.e. 2^31 is hard coded as 2147483648).
     if (TEMP < 2000) {
 		// For 30 bar model
-		T2 = 3 * ((uint64_t)dT * dT) / POW_2_33 ;
+		T2 = 3 * ((int64_t)dT * dT) / POW_2_33 ;
 		T2 = (int32_t)T2; // recast as signed 32bit integer
 		OFF2 = 3 * ((TEMP-2000) * (TEMP-2000)) / 2 ;
 		Sens2 = 5 * ((TEMP-2000) * (TEMP-2000)) / 8 ;	
     } else { // if TEMP is > 2000 (20.0C)
     	// For 30 bar model
-		T2 = 7 * ((uint64_t)dT * dT) / POW_2_37;
+		T2 = 7 * ((int64_t)dT * dT) / POW_2_37;
 		T2 = (int32_t)T2; // recast as signed 32bit integer
 		OFF2 = 1 * ((TEMP-2000) * (TEMP-2000)) / 16;
 		Sens2 = 0;
